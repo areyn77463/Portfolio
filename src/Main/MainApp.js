@@ -32,7 +32,6 @@ export default class MainApp extends Component {
                 break;
             default: break;
         }
-        // this.setState({showWorkHistory: !this.state.showWorkHistory});
     }
 
     updateDialog = (update) => {

@@ -78,6 +78,11 @@ export default class Dialog extends Component {
         
     }
 
+    handleItemClick = (name) => {
+        this.toggleMenu()
+        this.props.updateDialog(name)
+    }
+
     render() {
         
         return (<>
@@ -130,22 +135,22 @@ export default class Dialog extends Component {
                     <li 
                     className="start_item" 
                     style={styles.startItem}
-                    onClick={() => this.props.updateDialog("workHistory")}
+                    onClick={() => this.handleItemClick("workHistory")}
                     >📖 &nbsp; Work History</li>
                     <li 
                     className="start_item" 
                     style={styles.startItem}
-                    onClick={() => this.props.updateDialog("aboutMe")}
+                    onClick={() => this.handleItemClick("aboutMe")}
                     >🧍🏽‍♂️ &nbsp; About Me</li>
                     <li 
                     className="start_item" 
                     style={styles.startItem}
-                    onClick={() => this.props.updateDialog("documents")}
+                    onClick={() => this.handleItemClick("documents")}
                     >📄 &nbsp; Documents</li>
                     <li 
                     className="start_item" 
                     style={styles.aboveBottomItem}
-                    onClick={() => this.props.updateDialog("networking")}
+                    onClick={() => this.handleItemClick("networking")}
                     >🖧 &nbsp;&nbsp; Networking</li>
                     <li 
                     className="start_item" 
