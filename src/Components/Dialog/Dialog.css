@@ -1,9 +1,8 @@
 .Dialog {
     width: 400px;
     height: 400px;
-    background-color: lightblue;
-    border-radius: 10px;
-    border: 3px solid grey;
+    background-color: rgb(214, 211, 206);
+    border: 3px outset;
     position: absolute;
     cursor: move;
     top: 150px;
@@ -15,25 +14,21 @@
 }
 
 .DialogTitle {
+    font-size: 14px;
+    font-family: MS Sans Serif;
     font-weight: bold;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-bottom: 3px solid grey;
+    color: rgb(214, 211, 206);
+    padding-top: 1px;
+    padding-bottom: 3.5px;
+    padding-left: 5px;
+    margin: 1px;
+    background-color: #5c5c5c;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .Contents {
     padding-top: 50px;
     padding-bottom: 200px;
-}
-
-.closeButton {
-    font-size: 12px;
-    width: 100px;
-    color: black;
-    border: 2px solid black;
-    border-radius: 25px;
-    padding: 10px;
-    margin: 10px;
-    margin-left: 140px;
-    cursor: pointer;
 }

@@ -29,7 +29,7 @@ ul {
   .start_left li  {
     float: left;
     border: outset;
-    margin-top: 3px;
+    margin-top: 2px;
     display: block;
     color: black;
     text-align: center;
@@ -40,12 +40,16 @@ ul {
   .start_left_onClick li  {
     float: left;
     border: inset;
-    margin-top: 3px;
+    margin-top: 2px;
     display: block;
     color: black;
     text-align: center;
     padding: 2px 4px;
     text-decoration: none;
+  }
+
+  .start_left_onClick li:hover  {
+    cursor: default;
   }
 
   .start_left li:active  {

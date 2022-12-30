@@ -1,6 +1,51 @@
 import React, { Component } from 'react';
 import './Dialog.css'
 
+const styles = {
+    titleButtonInactiveX: {
+        width: '15px',
+        height: '15px',
+        backgroundColor: 'rgb(214, 211, 206)',
+        border: '2px outset rgb(214, 211, 206)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: '1.2rem',
+        fontWeight: 'bold',
+        cursor: 'default',
+        marginTop: '2px',
+        marginRight: '2px',
+        marginLeft: '2px'
+    },
+    titleButtonInactive_: {
+        width: '15px',
+        height: '15px',
+        backgroundColor: 'rgb(214, 211, 206)',
+        border: '2px outset rgb(214, 211, 206)',
+        display: 'flex',
+        alignItems: 'top',
+        justifyContent: 'center',
+        fontSize: '1.2rem',
+        fontWeight: 'bold',
+        cursor: 'default',
+        marginTop: '2px',
+        lineHeight: '15px'
+    },
+    titleButtonInactive: {
+        width: '15px',
+        height: '15px',
+        backgroundColor: 'rgb(214, 211, 206)',
+        border: '2px outset rgb(214, 211, 206)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: '.8rem',
+        fontWeight: 'bold',
+        cursor: 'default',
+        marginTop: '2px',
+    }
+}
+
 export default class Dialog extends Component {
     constructor(props) {
         super(props);
@@ -51,15 +96,25 @@ export default class Dialog extends Component {
             onMouseDown={this._dragStart} 
             onMouseMove={this._dragging} 
             onMouseUp={this._dragEnd}>
-                <div className="DialogTitle">My Dialog</div>
+                <div className="DialogTitle">
+                    {this.props.title}
+                    <div style={{display: 'flex', flexDirection:'row'}}>
+                        <button style={styles.titleButtonInactive_}>
+                            &minus;
+                        </button>
+                        <button style={styles.titleButtonInactive}>
+                            &#10064;
+                        </button>
+                        <button  onClick={() => this.props.onClose(this.props.id)} style={styles.titleButtonInactiveX}>
+                            &times;
+                        </button>
+                    </div>
+                </div>
                 <div  className="Contents">
                     Contents of the Dialog:
                      - one
                      - two
                      - three
-                </div>
-                <div className="closeButton" onClick={this.props.onClose}>
-                    Close
                 </div>
             </div>
         );

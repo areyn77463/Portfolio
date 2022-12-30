@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import StartImage from "../../Assets/Images/clipart426533.png"
 import "./Start.css"
-import { createRef } from 'react'; 
+import { createRef } from 'react';  
 
 const styles = {
     startItem: {
@@ -122,15 +122,37 @@ export default class Dialog extends Component {
                         fontWeight: 'bold',
                         fontSize: "1.4rem"
                     }}> &nbsp; Aaron Reynolds</div>
-                    <li className="start_item" style={styles.startItem} >
+                    <li 
+                    className="start_item" style={styles.startItem} >
                     🖥️ &nbsp; Projects
                         <div class="caret"></div>
                     </li>
-                    <li className="start_item" style={styles.startItem} >📖 &nbsp; Work History</li>
-                    <li className="start_item" style={styles.startItem} >🧍🏽‍♂️ &nbsp; About Me</li>
-                    <li className="start_item" style={styles.startItem} >📄 &nbsp; Documents</li>
-                    <li className="start_item" style={styles.aboveBottomItem} >🖧 &nbsp;&nbsp; Networking</li>
-                    <li className="start_item" style={styles.bottomItem} >🔙 &nbsp; Go Back ...</li>
+                    <li 
+                    className="start_item" 
+                    style={styles.startItem}
+                    onClick={() => this.props.updateDialog("workHistory")}
+                    >📖 &nbsp; Work History</li>
+                    <li 
+                    className="start_item" 
+                    style={styles.startItem}
+                    onClick={() => this.props.updateDialog("aboutMe")}
+                    >🧍🏽‍♂️ &nbsp; About Me</li>
+                    <li 
+                    className="start_item" 
+                    style={styles.startItem}
+                    onClick={() => this.props.updateDialog("documents")}
+                    >📄 &nbsp; Documents</li>
+                    <li 
+                    className="start_item" 
+                    style={styles.aboveBottomItem}
+                    onClick={() => this.props.updateDialog("networking")}
+                    >🖧 &nbsp;&nbsp; Networking</li>
+                    <li 
+                    className="start_item" 
+                    style={styles.bottomItem}
+                    onClick={() => window.history.back()}
+                    >🔙 &nbsp; Go Back ...
+                    </li>
                 </div>
             )}
 
