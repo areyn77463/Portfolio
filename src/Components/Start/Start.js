@@ -75,13 +75,14 @@ export default class Dialog extends Component {
         this.setState(state => ({
             isMenuVisible: !state.isMenuVisible
         }))
+        
     }
 
     render() {
         
         return (<>
         <ul ref={this.menuRef}>
-            <div className="start_left">
+            <div className={this.state.isMenuVisible ? "start_left_onClick" :  "start_left"}>
                 <li onClick={this.toggleMenu}>
                     <img 
                         src={StartImage} 
@@ -122,14 +123,14 @@ export default class Dialog extends Component {
                         fontSize: "1.4rem"
                     }}> &nbsp; Aaron Reynolds</div>
                     <li className="start_item" style={styles.startItem} >
-                        Projects
+                    🖥️ &nbsp; Projects
                         <div class="caret"></div>
                     </li>
-                    <li className="start_item" style={styles.startItem} >Work History</li>
-                    <li className="start_item" style={styles.startItem} >About Me</li>
-                    <li className="start_item" style={styles.startItem} >Documents</li>
-                    <li className="start_item" style={styles.aboveBottomItem} >Networking</li>
-                    <li className="start_item" style={styles.bottomItem} >Go Back ...</li>
+                    <li className="start_item" style={styles.startItem} >📖 &nbsp; Work History</li>
+                    <li className="start_item" style={styles.startItem} >🧍🏽‍♂️ &nbsp; About Me</li>
+                    <li className="start_item" style={styles.startItem} >📄 &nbsp; Documents</li>
+                    <li className="start_item" style={styles.aboveBottomItem} >🖧 &nbsp;&nbsp; Networking</li>
+                    <li className="start_item" style={styles.bottomItem} >🔙 &nbsp; Go Back ...</li>
                 </div>
             )}
 

@@ -4,6 +4,7 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: rgb(214, 211, 206);
+    border-top: outset;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -36,8 +37,19 @@ ul {
     text-decoration: none;
   }
 
-  .start_left li:hover  {
-    cursor: default;
+  .start_left_onClick li  {
+    float: left;
+    border: inset;
+    margin-top: 3px;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 2px 4px;
+    text-decoration: none;
+  }
+
+  .start_left li:active  {
+    border: inset;
   }
 
   .start_right li {
