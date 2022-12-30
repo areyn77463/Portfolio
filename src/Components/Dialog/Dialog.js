@@ -170,6 +170,7 @@ export default class Dialog extends Component {
                         <button
                         onMouseDown={() => {this.setState({_Active: true})}}
                         onMouseUp={() => this.setState({_Active: false})}
+                        onMouseLeave={() => this.setState({_Active: false})}
                         style={this.state._Active ? styles.titleButtonActive_ : styles.titleButtonInactive_}>
                             &minus;
                         </button>
@@ -183,6 +184,7 @@ export default class Dialog extends Component {
                         }} 
                         onMouseDown={() => {this.setState({xActive: true})}}
                         onMouseUp={() => this.setState({xActive: false})}
+                        onMouseLeave={() => this.setState({xActive: false})}
                         style={this.state.xActive ? styles.titleButtonActiveX : styles.titleButtonInactiveX}>
                             &times;
                         </button>

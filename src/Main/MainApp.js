@@ -3,6 +3,13 @@ import './MainApp.css';
 import Dialog from '../Components/Dialog/Dialog';
 import Start from '../Components/Start/Start'
 
+const title = {
+    "workHistory": "📖 Work History",
+    "aboutMe": "🧍🏽‍♂️ About Me",
+    "documents": "📄 Documents",
+    "networking": "🖧 Networking"
+}
+
 
 export default class MainApp extends Component {
     constructor(props) {
@@ -13,44 +20,58 @@ export default class MainApp extends Component {
             showAboutMe: false,
             showDocuments: false,
             showNetworking: false,
+            openWindows: []
         }
     }
 
     _showDialog(id) {
+        let temp = this.state.openWindows
+        let check = temp.find(value => value === title[id])
+        if (check === undefined) {
+            return
+        }
+        temp.splice(temp.indexOf(title[id]), 1)
         switch (id) {
-            case 0:
-                this.setState({showWorkHistory: !this.state.showWorkHistory});
+            case "workHistory":
+                this.setState({showWorkHistory: !this.state.showWorkHistory, openWindows: temp});
                 break;
-            case 1:
-                this.setState({showAboutMe: !this.state.showAboutMe});
+            case "aboutMe":
+                this.setState({showAboutMe: !this.state.showAboutMe, openWindows: temp});
                 break;
-            case 2:
-                this.setState({showDocuments: !this.state.showDocuments});
+            case "documents":
+                this.setState({showDocuments: !this.state.showDocuments, openWindows: temp});
                 break;
-            case 3:
-                this.setState({showNetworking: !this.state.showNetworking});
+            case "networking":
+                this.setState({showNetworking: !this.state.showNetworking, openWindows: temp});
                 break;
             default: break;
         }
     }
 
     updateDialog = (update) => {
+        let temp = this.state.openWindows
+        let check = temp.find(value => value === title[update])
+        if (check !== undefined) {
+            return
+        }
+        temp.push(title[update])
         switch (update) {
             case "workHistory":
-                this.setState({showWorkHistory: true});
+                this.setState({showWorkHistory: true, openWindows: temp});
                 break;
             case "aboutMe":
-                this.setState({showAboutMe: true});
+                this.setState({showAboutMe: true, openWindows: temp});
                 break;
             case "documents":
-                this.setState({showDocuments: true});
+                this.setState({showDocuments: true, openWindows: temp});
                 break;
             case "networking":
-                this.setState({showNetworking: true});
+                this.setState({showNetworking: true, openWindows: temp});
                 break;
             default:
                 break;
         }
+        
     }
 	
 	render() {
@@ -61,28 +82,29 @@ export default class MainApp extends Component {
                 onClose={(id) => this._showDialog(id)} 
                 show={this.state.showWorkHistory}
                 title={"📖 Work History"}
-                id= {0}
+                id= {"workHistory"}
                 />
                  <Dialog 
                 onClose={(id) => this._showDialog(id)} 
                 show={this.state.showAboutMe}
                 title={"🧍🏽‍♂️ About Me"}
-                id={1}
+                id={"aboutMe"}
                 />
                  <Dialog 
                 onClose={(id) => this._showDialog(id)} 
                 show={this.state.showDocuments}
                 title={"📄 Documents"}
-                id={2}
+                id={"documents"}
                 />
                  <Dialog 
                 onClose={(id) => this._showDialog(id)} 
                 show={this.state.showNetworking}
                 title={"🖧 Networking"}
-                id={3}
+                id={"networking"}
                 />
                 <Start
                 updateDialog = {(update) => this.updateDialog(update)}
+                windows = {this.state.openWindows}
                 />
 			</div>
 

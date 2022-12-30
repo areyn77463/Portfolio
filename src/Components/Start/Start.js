@@ -102,6 +102,12 @@ export default class Dialog extends Component {
                     <span style={{ fontFamily: 'MS Sans Serif', fontWeight: 'bold' }}>Start</span>
                 </li>
             </div>
+
+            {this.props.windows.map(title => {
+                return (
+                    <li>{title}</li>
+                )
+            })}
             
             {this.state.isMenuVisible && (
                 <div style={{ 
