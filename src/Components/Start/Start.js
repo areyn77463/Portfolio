@@ -69,11 +69,13 @@ export default class Dialog extends Component {
     componentDidUpdate = () => {
         if (this.listItemRef.current) {
             const itemLeft = this.listItemRef.current.offsetLeft;
-            if (itemLeft+200 > (window.innerWidth - 105) && this.state.startRightStyle !== "start_right_sized") {
-                this.setState({startRightStyle:"start_right_sized"})
+            if (itemLeft+200 > (window.innerWidth-Number(116)) && this.state.startRightStyle !== "start_right_sized") {
+                console.log("sized")
+                this.setState({startRightStyle: "start_right_sized"})
             }
-            if (itemLeft+200 < (window.innerWidth - 105) && this.state.startRightStyle !== "start_right") {
-                this.setState({startRightStyle:"start_right"})
+            if (itemLeft+200 < (window.innerWidth-Number(116)) && this.state.startRightStyle !== "start_right") {
+                console.log("standard")
+                this.setState({startRightStyle: "start_right"})
             }
         }
     }
