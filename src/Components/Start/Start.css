@@ -9,18 +9,43 @@ ul {
     bottom: 0;
     width: 100%;
     height: 36px;
+    display: flex;
   }
   
   li {
     float: left;
     border: outset;
-    margin-top: 3px;
+    margin-top: 2px;
     display: block;
     color: black;
     text-align: center;
     padding: 2px 16px;
     text-decoration: none;
   }
+
+  .list_item {
+    float: left;
+    border: outset;
+    margin-top: 2px;
+    margin-bottom: 3px;
+    display: block;
+    color: black;
+    text-align: left;
+    padding: 2px;
+    text-decoration: none;
+    margin-left: 2px;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1
+  }
+
+  /* @media (min-width: 1000px) {
+    .list_item {
+      width: 150px;
+    }
+  } */
 
   .start_left li:hover  {
     cursor: default;
@@ -35,6 +60,8 @@ ul {
     text-align: center;
     padding: 2px 4px;
     text-decoration: none;
+    min-width: fit-content;
+    white-space: nowrap;
   }
 
   .start_left_onClick li  {
@@ -57,15 +84,40 @@ ul {
   }
 
   .start_right li {
+    position: absolute;
+    right: 0;
     float: right;
     border: inset;
     display: block;
     text-align: center;
     padding: 2px 16px;
     text-decoration: none;
+    margin-right: 2px;
+    margin-left: 2px;
+    min-width: fit-content;
+    white-space: nowrap;
   }
 
   .start_right li:hover  {
+    cursor: default;
+  }
+
+  .start_right_sized li {
+    /* position: absolute; */
+    /* right: 0; */
+    float: right;
+    border: inset;
+    display: block;
+    text-align: center;
+    padding: 2px 16px;
+    text-decoration: none;
+    margin-right: 2px;
+    margin-left: 2px;
+    min-width: fit-content;
+    white-space: nowrap;
+  }
+
+  .start_right_sized li:hover  {
     cursor: default;
   }
 

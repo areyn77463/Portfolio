@@ -43,10 +43,14 @@ export default class Dialog extends Component {
         super(props);
 
         this.menuRef = createRef();
+        this.listItemRef = createRef();
+        this.startRightRef = createRef();
 
         this.state = {
             time:  new  Date().toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"}),
             isMenuvisible: false, 
+            startRightStyle: "start_right",
+            originalRight: 0
         }
     }
 
@@ -58,6 +62,20 @@ export default class Dialog extends Component {
         }, 1000)
 
         document.addEventListener("click", this.handleClickOutside);
+        this.setState({originalRight: this.startRightRef.current.offsetLeft})
+
+    }
+
+    componentDidUpdate = () => {
+        if (this.listItemRef.current) {
+            const itemLeft = this.listItemRef.current.offsetLeft;
+            if (itemLeft+200 > (window.innerWidth - 105) && this.state.startRightStyle !== "start_right_sized") {
+                this.setState({startRightStyle:"start_right_sized"})
+            }
+            if (itemLeft+200 < (window.innerWidth - 105) && this.state.startRightStyle !== "start_right") {
+                this.setState({startRightStyle:"start_right"})
+            }
+        }
     }
 
     componentWillUnmount = () => {
@@ -102,13 +120,13 @@ export default class Dialog extends Component {
                     <span style={{ fontFamily: 'MS Sans Serif', fontWeight: 'bold' }}>Start</span>
                 </li>
             </div>
-
-            {this.props.windows.map(title => {
-                return (
-                    <li>{title}</li>
-                )
-            })}
-            
+            {/* <div className={"item_container"}> */}
+                {this.props.windows.map((title) => {
+                    return (
+                        <li ref={this.listItemRef} className={"list_item"} key={Math.random()} >{title}</li>
+                    )
+                })}
+            {/* </div> */}
             {this.state.isMenuVisible && (
                 <div style={{ 
                     position: "fixed", 
@@ -168,8 +186,8 @@ export default class Dialog extends Component {
             )}
 
                     
-            <div className="start_right">
-                <li>{this.state.time}</li>
+            <div className={this.state.startRightStyle}>
+                <li ref={this.startRightRef}>{this.state.time}</li>
             </div>
         </ul>
         </>)

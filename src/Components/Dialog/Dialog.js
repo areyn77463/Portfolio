@@ -17,6 +17,7 @@ const styles = {
         marginTop: '2px',
         marginRight: '2px',
         marginLeft: '2px',
+        lineHeight: '16px'
     },
     titleButtonActiveX: {
         width: '15px',
@@ -32,6 +33,7 @@ const styles = {
         marginTop: '2px',
         marginRight: '2px',
         marginLeft: '2px',
+        lineHeight: '16px'
     },
     titleButtonInactive_: {
         width: '15px',
