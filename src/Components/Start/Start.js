@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import StartImage from "../../Assets/Images/clipart426533.png"
 import "./Start.css"
 import { createRef } from 'react';  
+import {title as fullTitles} from '../../Main/MainApp'
 
 const styles = {
     startItem: {
@@ -101,6 +102,7 @@ export default class Dialog extends Component {
     handleItemClick = (name) => {
         this.toggleMenu()
         this.props.updateDialog(name)
+        this.props.updateActive(fullTitles[name])
     }
 
     render() {
@@ -125,7 +127,14 @@ export default class Dialog extends Component {
             {/* <div className={"item_container"}> */}
                 {this.props.windows.map((title) => {
                     return (
-                        <li ref={this.listItemRef} className={"list_item"} key={Math.random()} >{title}</li>
+                        <li 
+                            ref={this.listItemRef} 
+                            className={this.props.activeWindow === title ? "list_item_active" : "list_item"} 
+                            key={Math.random()}
+                            onClick={() => {this.props.updateActive(title); this.props.updateDialog(Object.keys(fullTitles).find(key => fullTitles[key] === title))}} 
+                        >
+                            {title}
+                        </li>
                     )
                 })}
             {/* </div> */}

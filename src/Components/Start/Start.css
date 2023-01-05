@@ -38,8 +38,35 @@ ul {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    flex: 1
+    flex: 1;
+    cursor: default;
+    font-family: 'MS Sans Serif'; 
+    font-weight: 'bold';
   }
+
+  .list_item_active {
+    float: left;
+    border: inset;
+    margin-top: 2px;
+    margin-bottom: 3px;
+    display: block;
+    color: black;
+    text-align: left;
+    padding: 2px;
+    text-decoration: none;
+    margin-left: 2px;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    cursor: default;
+    background-color: rgb(233, 231, 226);
+    font-weight: bold;
+    font-family: 'MS Sans Serif'; 
+    font-weight: 'bold';
+  }
+
 
   /* @media (min-width: 1000px) {
     .list_item {

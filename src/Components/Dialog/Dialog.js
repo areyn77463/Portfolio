@@ -93,7 +93,8 @@ export default class Dialog extends Component {
             styles:{},
             xActive: false,
             _Active: false,
-            isActive: false
+            isActive: false,
+            changeMade: false
         }
     }
 
@@ -103,6 +104,9 @@ export default class Dialog extends Component {
 
     componentWillUnmount = () => {
         document.removeEventListener("click", this.handleClickOutside)
+    }
+
+    componentDidUpdate = (prevProps, prevState) => {
     }
 
     handleClickOutside = (event) => {
@@ -150,26 +154,30 @@ export default class Dialog extends Component {
     }
 
     render() {
-        let classes = this.props.show ? 'Dialog' : 'Dialog hidden'
-        classes = this.state.isActive ? 'DialogActive' : classes
+        let dialog = this.props.show ? 'Dialog' : 'Dialog hidden'
+        dialog = this.state.isActive || this.props.activeWindow === this.props.title ? 'DialogActive' : dialog
 
         return (
-            <div className ={classes} 
+            <div className ={dialog} 
             ref={this.dialogRef}
             style={this.state.styles}
-            onMouseDown={this._dragStart} 
+            onMouseDown={(e) => {this._dragStart(e); this.props.updateActive(this.props.title)}} 
             onMouseMove={this._dragging} 
             onMouseUp={this._dragEnd}
             onMouseLeave={this._dragEnd}
             >
                 <div 
-                className={this.state.isActive ? "DialogTitleActive" : "DialogTitle"} 
+                className={this.state.isActive || this.props.activeWindow === this.props.title ? "DialogTitleActive" : "DialogTitle"} 
                 id={"DialogTitle"}
-                onMouseDown={() => this.setState({isActive: true})}
+                onMouseDown={() => {this.setState({isActive: true}); this.props.updateActive(this.props.title)}}
                 >
                     {this.props.title}
                     <div style={{display: 'flex', flexDirection:'row'}}>
                         <button
+                        onClick={() => {
+                            this.setState({isActive: false})
+                            this.props.minimize(this.props.id)
+                        }}
                         onMouseDown={() => {this.setState({_Active: true})}}
                         onMouseUp={() => this.setState({_Active: false})}
                         onMouseLeave={() => this.setState({_Active: false})}
