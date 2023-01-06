@@ -170,23 +170,23 @@ export default class Dialog extends Component {
                     <li 
                     className="start_item" 
                     style={styles.startItem}
-                    onClick={() => this.handleItemClick("workHistory")}
-                    >📖 &nbsp; Work History</li>
-                    <li 
-                    className="start_item" 
-                    style={styles.startItem}
-                    onClick={() => this.handleItemClick("aboutMe")}
-                    >🧍🏽‍♂️ &nbsp; About Me</li>
-                    <li 
-                    className="start_item" 
-                    style={styles.startItem}
                     onClick={() => this.handleItemClick("documents")}
                     >📄 &nbsp; Documents</li>
                     <li 
                     className="start_item" 
-                    style={styles.aboveBottomItem}
+                    style={styles.startItem}
                     onClick={() => this.handleItemClick("networking")}
                     >🖧 &nbsp;&nbsp; Networking</li>
+                    <li 
+                    className="start_item" 
+                    style={styles.startItem}
+                    onClick={() => this.handleItemClick("workHistory")}
+                    >📖 &nbsp; Work History</li>
+                    <li 
+                    className="start_item" 
+                    style={styles.aboveBottomItem}
+                    onClick={() => this.handleItemClick("aboutMe")}
+                    >🧍🏽‍♂️ &nbsp; About Me</li>
                     <li 
                     className="start_item" 
                     style={styles.bottomItem}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Dialog.css'
 import {createRef} from 'react';
 import WorkHistory from '../Content/WorkHistory/WorkHistory'
+import AboutMe from '../Content/AboutMe/AboutMe'
 import {title as fullTitles} from '../../Main/MainApp'
 
 const styles = {
@@ -103,7 +104,10 @@ export default class Dialog extends Component {
     componentDidMount = () => {
         document.addEventListener("click", this.handleClickOutside);
         if (this.props.title === fullTitles["workHistory"]) {
-            this.setState({styles: {width: '60vw', height: '80vh'}})
+            this.setState({styles: {width: '42vw', height: '80vh', top: '7vh', left: '20vw'}})
+        }
+        if (this.props.title === fullTitles["aboutMe"]) {
+            this.setState({styles: {width: '70vw', height: '80vh', top: '7vh', left: '20vw'}})
         }
     }
 
@@ -206,7 +210,7 @@ export default class Dialog extends Component {
                         </button>
                         <button  
                         onClick={() => {
-                            this.setState({isActive: false})
+                            this.setState({isActive: false, styles: {...this.state.styles, top: '7vh', left: '20vw'}})
                             this.props.onClose(this.props.id)
                         }} 
                         onMouseDown={() => {this.setState({xActive: true})}}
@@ -218,7 +222,7 @@ export default class Dialog extends Component {
                     </div>
                 </div>
                 <div  className="Contents">
-                    {this.props.title === fullTitles["workHistory"] ? (<WorkHistory/>) : (<></>)}
+                    {this.props.title === fullTitles["workHistory"] ? (<WorkHistory/>) : this.props.title === fullTitles["aboutMe"] ? (<AboutMe/>) : (<></>)}
                 </div>
             </div>
         );
