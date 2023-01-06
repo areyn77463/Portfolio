@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './Dialog.css'
 import {createRef} from 'react';
+import WorkHistory from '../Content/WorkHistory/WorkHistory'
+import {title as fullTitles} from '../../Main/MainApp'
 
 const styles = {
     titleButtonInactiveX: {
@@ -100,6 +102,9 @@ export default class Dialog extends Component {
 
     componentDidMount = () => {
         document.addEventListener("click", this.handleClickOutside);
+        if (this.props.title === fullTitles["workHistory"]) {
+            this.setState({styles: {width: '60vw', height: '80vh'}})
+        }
     }
 
     componentWillUnmount = () => {
@@ -134,12 +139,24 @@ export default class Dialog extends Component {
             let left = e.clientX - this.state.diffX;
             let top = e.clientY - this.state.diffY;
 
-            this.setState({
-                styles: {
+            this.setState((state) => {
+                return {
+                  ...state,
+                  styles: {
+                    ...state.styles,
                     left: left,
                     top: top
-                }
-            });
+                  },
+                };
+              });
+              
+
+            // this.setState({
+            //     styles: {
+            //         left: left,
+            //         top: top
+            //     }
+            // });
         }
     }
 
@@ -201,10 +218,7 @@ export default class Dialog extends Component {
                     </div>
                 </div>
                 <div  className="Contents">
-                    Contents of the Dialog:
-                     - one
-                     - two
-                     - three
+                    {this.props.title === fullTitles["workHistory"] ? (<WorkHistory/>) : (<></>)}
                 </div>
             </div>
         );

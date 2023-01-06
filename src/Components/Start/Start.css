@@ -62,9 +62,8 @@ ul {
     flex: 1;
     cursor: default;
     background-color: rgb(233, 231, 226);
+    font-family: 'MS Sans', Serif; 
     font-weight: bold;
-    font-family: 'MS Sans Serif'; 
-    font-weight: 'bold';
   }
 
 
