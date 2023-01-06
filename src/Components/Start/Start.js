@@ -144,7 +144,7 @@ export default class Dialog extends Component {
                     zIndex: 2, 
                     display: "flex", 
                     flexDirection: "column",
-                    bottom: "30px",
+                    bottom: "32.5px",
                     left: "3px",
                     backgroundColor: "rgb(214, 211, 206)",
                     border: "outset",
@@ -170,8 +170,10 @@ export default class Dialog extends Component {
                     <li 
                     className="start_item" 
                     style={styles.startItem}
-                    onClick={() => this.handleItemClick("documents")}
-                    >📄 &nbsp; Documents</li>
+                    // onClick={() => this.handleItemClick("documents")}
+                    >📄 &nbsp; Documents
+                        <div class="caret"></div>
+                    </li>
                     <li 
                     className="start_item" 
                     style={styles.startItem}
