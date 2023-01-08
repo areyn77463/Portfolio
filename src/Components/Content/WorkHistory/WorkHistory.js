@@ -32,7 +32,7 @@ const WorkHistory = (props) => {
             <h2 style={{padding: '0', margin: '0'}}>Richmond, VA</h2>
 
             <h3 style={{fontWeight: 'normal'}}><i><b>233  Analytics</b> - Full Stack Developer</i></h3>
-            <p>
+            <p style={{paddingLeft: '12px'}}>
             Modified, developed, and demonstrated software features using SAFe agile principles and practices to deliver timely updates to a production level web application <br/><br/>
             <b>Key Achievements:</b><br/>
             </p>
@@ -69,7 +69,7 @@ const WorkHistory = (props) => {
             <h2 style={{padding: '0', margin: '0'}}>Norfolk, VA</h2>
 
             <h3 style={{fontWeight: 'normal'}}><i>Online Computer Science Tutor</i></h3>
-            <p>
+            <p style={{paddingLeft: '12px'}}>
             Assisted students in achieving their set goals by augmenting their understanding of computer science and cybersecurity concepts<br/><br/>
             <b>Key Achievements:</b><br/>
             </p>

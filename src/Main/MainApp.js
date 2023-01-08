@@ -8,7 +8,8 @@ export const title = {
     "aboutMe": "🧍🏽‍♂️ About Me",
     "documents": "📄 Documents",
     "networking": "🖧 Networking",
-    "resume": "📜 Resume"
+    "resume": "📜 Resume",
+    "projectExplorer": "🔍 Project Explorer"
 }
 
 
@@ -23,7 +24,8 @@ export default class MainApp extends Component {
             showNetworking: false,
             openWindows: [],
             activeWindow: "",
-            showResume: false
+            showResume: false,
+            // showProjectExplorer: false
         }
     }
 
@@ -50,6 +52,9 @@ export default class MainApp extends Component {
             case "resume":
                 this.setState({showResume: !this.state.showResume, openWindows: temp, activeWindow: ""});
                 break;
+            // case "projectExplorer":
+            //     this.setState({showProjectExplorer: !this.state.showProjectExplorer, openWindows: temp, activeWindow: ""});
+            //     break;
             default: break;
         }
     }
@@ -71,6 +76,9 @@ export default class MainApp extends Component {
             case "resume":
                 this.setState({showResume: !this.state.showResume, activeWindow: ""});
                 break;
+            // case "projectExplorer":
+            //     this.setState({showProjectExplorer: !this.state.showProjectExplorer, activeWindow: ""});
+            //     break;
             default: break;
         }
     }
@@ -98,6 +106,9 @@ export default class MainApp extends Component {
             case "resume":
                 this.setState({showResume: true, openWindows: temp});
                 break;
+            // case "Project Explorer":
+            //     this.setState({showProjectExplorer: true, openWindows: temp});
+            //     break;
             default:
                 break;
         }
@@ -117,6 +128,16 @@ export default class MainApp extends Component {
         
 		return (
 			<div className='MainApp'>
+                {/* <Dialog
+                onClose={(id) => this._showDialog(id)} 
+                show={this.state.showProjectExplorer}
+                title={"🔍 Project Explorer"}
+                activeWindow={this.state.activeWindow}
+                id= {"projectExplorer"}
+                updateActive={(dialog) => this.updateActive(dialog)}
+                minimize = {(id) => this.minimize(id)}
+                /> */}
+
                 <Dialog
                 onClose={(id) => this._showDialog(id)} 
                 show={this.state.showResume}

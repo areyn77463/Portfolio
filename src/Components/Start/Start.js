@@ -5,6 +5,10 @@ import { createRef } from 'react';
 import {title as fullTitles} from '../../Main/MainApp'
 
 const styles = {
+    link: {
+        textDecoration: 'none',
+        color: 'inherit'
+    },
     startItem: {
         float: "left",
         marginTop: "3px",
@@ -76,7 +80,8 @@ export default class Dialog extends Component {
             isMenuVisible: false, 
             startRightStyle: "start_right",
             originalRight: 0,
-            isDocumentsVisible: false
+            isDocumentsVisible: false,
+            isProjectsVisible: false
         }
     }
 
@@ -111,7 +116,7 @@ export default class Dialog extends Component {
 
     handleClickOutside = (event) => {
         if (this.menuRef.current && !this.menuRef.current.contains(event.target)) {
-            this.setState({isMenuVisible: false, isDocumentsVisible: false})
+            this.setState({isMenuVisible: false, isDocumentsVisible: false, isProjectsVisible: false})
         }
     }
 
@@ -130,11 +135,15 @@ export default class Dialog extends Component {
     }
 
     handleOnHover = () => {
-        this.setState({isDocumentsVisible: true})
+        this.setState({isDocumentsVisible: true, isProjectsVisible: false})
+    }
+
+    handleProjectHover = () => {
+        this.setState({isProjectsVisible: true, isDocumentsVisible: false})
     }
 
     handleOffHover = () => {
-        this.setState({isDocumentsVisible: false})
+        this.setState({isDocumentsVisible: false, isProjectsVisible: false})
 
     }
 
@@ -196,9 +205,12 @@ export default class Dialog extends Component {
                         fontSize: "1.4rem"
                     }}> &nbsp; Aaron Reynolds</div>
                     <li 
-                    className="start_item" style={styles.startItem} >
+                    className="start_item" 
+                    style={styles.startItem}
+                    onMouseEnter={this.handleProjectHover}
+                     >
                     🖥️ &nbsp; Projects
-                        <div className="caret"></div>
+                        <div className={this.state.isProjectsVisible ? "selectedCaret" : "caret"}></div>
                     </li>
                     <li 
                     className="start_item" 
@@ -253,6 +265,38 @@ export default class Dialog extends Component {
                     onClick={() => this.handleItemClick("resume")}
                     >
                     📜 &nbsp; Resume
+                    </li>
+                </div>
+            )}
+
+            {this.state.isProjectsVisible && (
+                <div style={{ 
+                    position: "fixed", 
+                    zIndex: 4, 
+                    display: "flex", 
+                    flexDirection: "column",
+                    bottom: "230px",
+                    left: "198px",
+                    backgroundColor: "rgb(214, 211, 206)",
+                    border: "outset",
+                    width: "200px"
+                    }}
+                    >
+                    <li 
+                    className="start_item" style={styles.innerStartItem}
+                    >
+                        <a style={styles.link} href="https://chalkcoaching.com/" target="_blank">🦉 &nbsp; CHALK Coaching </a>
+                    </li>
+                    <li 
+                    className="start_item" style={styles.innerStartItem}
+                    >
+                        <a style={styles.link} href="https://folar-va.org/" target="_blank">🌲 &nbsp; FOLAR </a>
+                    </li>
+                    <li 
+                    className="start_item" style={styles.innerStartItem}
+                    // onClick={() => this.handleItemClick("projectExplorer")}
+                    >
+                    <a style={styles.link} href="https://github.com/areyn77463?tab=repositories" target="_blank"> 🔍 &nbsp; Project Explorer </a>
                     </li>
                 </div>
             )}

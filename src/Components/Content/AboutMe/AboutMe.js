@@ -15,7 +15,7 @@ const styles = {
 const AboutMe = (props) => {
 
     return (<>
-    <div style={{height: '100%', width: '100%', marginTop: '20px'}}>
+    <div style={{height: '100%', width: '100%', marginTop: '20px', overflowX: 'hidden'}}>
         <img 
             src={Me} 
             alt={"Aaron Reynolds"}

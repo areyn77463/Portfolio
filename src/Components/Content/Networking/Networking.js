@@ -38,13 +38,13 @@ const Networking = (props) => {
       <a href="mailto: ajr2934@outlook.com" style={styles.button}>
         <img src={email} alt="Email" style={styles.buttonImage} />
       </a>
-      <a href="https://www.linkedin.com/in/aaron-reynolds-833352197/" style={styles.button}>
+      <a href="https://www.linkedin.com/in/aaron-reynolds-833352197/" target="_blank" style={styles.button}>
         <img src={linkedin} alt="LinkedIn" style={styles.buttonImage} />
       </a>
-      <a href="https://github.com/areyn77463" style={styles.button}>
+      <a href="https://github.com/areyn77463" target="_blank" style={styles.button}>
         <img src={github} alt="GitHub" style={styles.buttonImage} />
       </a>
-      <a href="https://leetcode.com/areyn009/" style={styles.button}>
+      <a href="https://leetcode.com/areyn009/" target="_blank" style={styles.button}>
         <img src={leetcode} alt="LeetCode" style={styles.buttonImage} />
       </a>
     </div>

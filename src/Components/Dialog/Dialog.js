@@ -5,6 +5,7 @@ import WorkHistory from '../Content/WorkHistory/WorkHistory'
 import AboutMe from '../Content/AboutMe/AboutMe'
 import Networking from '../Content/Networking/Networking'
 import Resume from '../Content/Resume/Resume'
+import ProjectExplorer from '../Content/ProjectExplorer/ProjectExplorer'
 import {title as fullTitles} from '../../Main/MainApp'
 
 const styles = {
@@ -106,17 +107,20 @@ export default class Dialog extends Component {
     componentDidMount = () => {
         document.addEventListener("click", this.handleClickOutside);
         if (this.props.title === fullTitles["workHistory"]) {
-            this.setState({styles: {width: '42vw', height: '80vh', top: '7vh', left: '20vw'}})
+            this.setState({styles: {width: '42vw', height: '80vh', top: '7vh', left: '20vw', minWidth: '370px'}})
         }
         if (this.props.title === fullTitles["aboutMe"]) {
-            this.setState({styles: {width: '70vw', height: '80vh', top: '7vh', left: '20vw'}})
+            this.setState({styles: {width: '70vw', height: '80vh', top: '7vh', left: '20vw', minWidth: '700px'}})
         }
         if (this.props.title === fullTitles["networking"]) {
-            this.setState({styles: {width: '40vw', height: '20vh', top: '7vh', left: '20vw'}})
+            this.setState({styles: {width: '40vw', height: '20vh', top: '7vh', left: '20vw', minWidth: '400px', minHeight: '140px'}})
         }
         if (this.props.title === fullTitles["resume"]) {
-            this.setState({styles: {width: '68vw', height: '80vh', top: '7vh', left: '20vw'}})
+            this.setState({styles: {width: '68vw', height: '80vh', top: '7vh', left: '20vw', minWidth: '680px', maxWidth: '870px'}})
         }
+        // if (this.props.title === fullTitles["projectExplorer"]) {
+        //     this.setState({styles: {width: '50vw', height: '60vh', top: '7vh', left: '20vw'}})
+        // }
     }
 
     componentWillUnmount = () => {
@@ -233,7 +237,8 @@ export default class Dialog extends Component {
                     {this.props.title === fullTitles["workHistory"] ? (<WorkHistory/>) : 
                     this.props.title === fullTitles["aboutMe"] ? (<AboutMe/>) : 
                     this.props.title === fullTitles["networking"] ? (<Networking/>) :
-                    this.props.title === fullTitles["resume"] ? (<Resume/>) : (<></>)}
+                    this.props.title === fullTitles["resume"] ? (<Resume/>) : 
+                    /*this.props.title === fullTitles["projectExplorer"] ? (<ProjectExplorer/>) :*/ (<></>)}
                 </div>
             </div>
         );
