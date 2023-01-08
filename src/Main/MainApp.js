@@ -30,7 +30,7 @@ export default class MainApp extends Component {
     }
 
     componentDidMount = () => {
-        alert("This web portfolio is not yet optimized for mobile users.")
+        window.alert("This web portfolio is not yet optimized for mobile users.")
     }
 
     _showDialog(id) {
