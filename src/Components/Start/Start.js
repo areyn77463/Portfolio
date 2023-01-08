@@ -15,6 +15,30 @@ const styles = {
         padding: "10px 16px",
         textDecoration: "none",
     },
+    selectedStartItem: {
+        float: "left",
+        marginTop: "3px",
+        marginLeft: "20px",
+        display: "block",
+        border: "none",
+        textAlign: "left",
+        padding: "10px 16px",
+        textDecoration: "none",
+        backgroundColor: 'darkBlue',
+        color: 'white'
+    },
+    selectedCaret: {
+        borderLeft: 'white'
+    },
+    innerStartItem: {
+        float: "left",
+        display: "block",
+        border: "none",
+        textAlign: "left",
+        margin: '0',
+        padding: "1px 16px",
+        textDecoration: "none",
+    },
     bottomItem: {
         float: "left",
         marginTop: "0px",
@@ -49,9 +73,10 @@ export default class Dialog extends Component {
 
         this.state = {
             time:  new  Date().toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"}),
-            isMenuvisible: false, 
+            isMenuVisible: false, 
             startRightStyle: "start_right",
-            originalRight: 0
+            originalRight: 0,
+            isDocumentsVisible: false
         }
     }
 
@@ -71,11 +96,9 @@ export default class Dialog extends Component {
         if (this.listItemRef.current) {
             const itemLeft = this.listItemRef.current.offsetLeft;
             if (itemLeft+200 > (window.innerWidth-Number(116)) && this.state.startRightStyle !== "start_right_sized") {
-                console.log("sized")
                 this.setState({startRightStyle: "start_right_sized"})
             }
             if (itemLeft+200 < (window.innerWidth-Number(116)) && this.state.startRightStyle !== "start_right") {
-                console.log("standard")
                 this.setState({startRightStyle: "start_right"})
             }
         }
@@ -88,7 +111,7 @@ export default class Dialog extends Component {
 
     handleClickOutside = (event) => {
         if (this.menuRef.current && !this.menuRef.current.contains(event.target)) {
-            this.setState({isMenuVisible: false})
+            this.setState({isMenuVisible: false, isDocumentsVisible: false})
         }
     }
 
@@ -101,8 +124,18 @@ export default class Dialog extends Component {
 
     handleItemClick = (name) => {
         this.toggleMenu()
+        this.handleOffHover()
         this.props.updateDialog(name)
         this.props.updateActive(fullTitles[name])
+    }
+
+    handleOnHover = () => {
+        this.setState({isDocumentsVisible: true})
+    }
+
+    handleOffHover = () => {
+        this.setState({isDocumentsVisible: false})
+
     }
 
     render() {
@@ -165,35 +198,61 @@ export default class Dialog extends Component {
                     <li 
                     className="start_item" style={styles.startItem} >
                     🖥️ &nbsp; Projects
-                        <div class="caret"></div>
+                        <div className="caret"></div>
                     </li>
                     <li 
                     className="start_item" 
-                    style={styles.startItem}
-                    // onClick={() => this.handleItemClick("documents")}
+                    style={this.state.isDocumentsVisible ? styles.selectedStartItem : styles.startItem}
+                    onMouseEnter={this.handleOnHover}
                     >📄 &nbsp; Documents
-                        <div class="caret"></div>
+                        <div className={this.state.isDocumentsVisible ? "selectedCaret" : "caret"}></div>
                     </li>
                     <li 
                     className="start_item" 
                     style={styles.startItem}
+                    onMouseEnter={this.handleOffHover}
                     onClick={() => this.handleItemClick("networking")}
                     >🖧 &nbsp;&nbsp; Networking</li>
                     <li 
                     className="start_item" 
                     style={styles.startItem}
+                    onMouseEnter={this.handleOffHover}
                     onClick={() => this.handleItemClick("workHistory")}
                     >📖 &nbsp; Work History</li>
                     <li 
                     className="start_item" 
                     style={styles.aboveBottomItem}
+                    onMouseEnter={this.handleOffHover}
                     onClick={() => this.handleItemClick("aboutMe")}
                     >🧍🏽‍♂️ &nbsp; About Me</li>
                     <li 
                     className="start_item" 
                     style={styles.bottomItem}
+                    onMouseEnter={this.handleOffHover}
                     onClick={() => window.history.back()}
                     >🔙 &nbsp; Go Back ...
+                    </li>
+                </div>
+            )}
+
+            {this.state.isDocumentsVisible && (
+                <div style={{ 
+                    position: "fixed", 
+                    zIndex: 4, 
+                    display: "flex", 
+                    flexDirection: "column",
+                    bottom: "228px",
+                    left: "198px",
+                    backgroundColor: "rgb(214, 211, 206)",
+                    border: "outset",
+                    width: "200px"
+                    }}
+                    >
+                    <li 
+                    className="start_item" style={styles.innerStartItem}
+                    onClick={() => this.handleItemClick("resume")}
+                    >
+                    📜 &nbsp; Resume
                     </li>
                 </div>
             )}

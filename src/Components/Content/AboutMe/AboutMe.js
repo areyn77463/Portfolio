@@ -21,7 +21,7 @@ const AboutMe = (props) => {
             alt={"Aaron Reynolds"}
             style={{height: '97%', border: 'inset', float: 'left', marginRight: '20px'}}
         />
-        <div style={{border: 'inset', backgroundColor: 'white', height: '97%', overflowY: 'scroll'}}>
+        <div style={{border: 'inset', backgroundColor: 'white', height: '97%', overflowY: 'scroll', textIndent: '45px', padding: '0 48px 0 48px'}}>
             <div>
                 <h1 style={{textAlign: 'center', padding: '20px 0 0 0', margin: '0 0 0 0'}}>Aaron Reynolds</h1>
                 <h3 style={{textAlign: 'center', padding: '0 0 35px 0', margin: '0 0 0 0'}}> Software Developer</h3>

@@ -4,6 +4,7 @@ import {createRef} from 'react';
 import WorkHistory from '../Content/WorkHistory/WorkHistory'
 import AboutMe from '../Content/AboutMe/AboutMe'
 import Networking from '../Content/Networking/Networking'
+import Resume from '../Content/Resume/Resume'
 import {title as fullTitles} from '../../Main/MainApp'
 
 const styles = {
@@ -112,6 +113,9 @@ export default class Dialog extends Component {
         }
         if (this.props.title === fullTitles["networking"]) {
             this.setState({styles: {width: '40vw', height: '20vh', top: '7vh', left: '20vw'}})
+        }
+        if (this.props.title === fullTitles["resume"]) {
+            this.setState({styles: {width: '68vw', height: '80vh', top: '7vh', left: '20vw'}})
         }
     }
 
@@ -228,7 +232,8 @@ export default class Dialog extends Component {
                 <div  className="Contents">
                     {this.props.title === fullTitles["workHistory"] ? (<WorkHistory/>) : 
                     this.props.title === fullTitles["aboutMe"] ? (<AboutMe/>) : 
-                    this.props.title === fullTitles["networking"] ? (<Networking/>) : (<></>)}
+                    this.props.title === fullTitles["networking"] ? (<Networking/>) :
+                    this.props.title === fullTitles["resume"] ? (<Resume/>) : (<></>)}
                 </div>
             </div>
         );

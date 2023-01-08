@@ -7,7 +7,8 @@ export const title = {
     "workHistory": "📖 Work History",
     "aboutMe": "🧍🏽‍♂️ About Me",
     "documents": "📄 Documents",
-    "networking": "🖧 Networking"
+    "networking": "🖧 Networking",
+    "resume": "📜 Resume"
 }
 
 
@@ -21,7 +22,8 @@ export default class MainApp extends Component {
             showDocuments: false,
             showNetworking: false,
             openWindows: [],
-            activeWindow: ""
+            activeWindow: "",
+            showResume: false
         }
     }
 
@@ -45,6 +47,9 @@ export default class MainApp extends Component {
             case "networking":
                 this.setState({showNetworking: !this.state.showNetworking, openWindows: temp, activeWindow: ""});
                 break;
+            case "resume":
+                this.setState({showResume: !this.state.showResume, openWindows: temp, activeWindow: ""});
+                break;
             default: break;
         }
     }
@@ -62,6 +67,9 @@ export default class MainApp extends Component {
                 break;
             case "networking":
                 this.setState({showNetworking: !this.state.showNetworking, activeWindow: ""});
+                break;
+            case "resume":
+                this.setState({showResume: !this.state.showResume, activeWindow: ""});
                 break;
             default: break;
         }
@@ -87,6 +95,9 @@ export default class MainApp extends Component {
             case "networking":
                 this.setState({showNetworking: true, openWindows: temp});
                 break;
+            case "resume":
+                this.setState({showResume: true, openWindows: temp});
+                break;
             default:
                 break;
         }
@@ -100,13 +111,23 @@ export default class MainApp extends Component {
         if (dialog === "" && this.state.activeWindow !== "") {
             this.setState({activeWindow: ""})
         }
-        console.log(dialog)
     }
 	
 	render() {
         
 		return (
 			<div className='MainApp'>
+                <Dialog
+                onClose={(id) => this._showDialog(id)} 
+                show={this.state.showResume}
+                title={"📜 Resume"}
+                activeWindow={this.state.activeWindow}
+                id= {"resume"}
+                updateActive={(dialog) => this.updateActive(dialog)}
+                minimize = {(id) => this.minimize(id)}
+                />
+
+
                 <Dialog 
                 onClose={(id) => this._showDialog(id)} 
                 show={this.state.showWorkHistory}
