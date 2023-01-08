@@ -1,13 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import { useEffect } from 'react';
 
 function App() {
-
-  useEffect(() => {
-    alert("This is not optimized to run on mobile devices yet.")
-  }, []);
-
   return (
     <div className="App">
       <header className="App-header">
