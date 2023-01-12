@@ -68,4 +68,37 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# PortfolioDraft
+# Windows 95-inspired Web Portfolio
+
+This web portfolio is built using React and simulates the start bar, opening windows, moving windows, minimizing windows, and closing windows from Windows 95. 
+
+## Features
+- Start bar simulation
+- Opening and closing windows
+- Moving windows
+- Minimizing windows
+- Closing windows
+
+## What I learned
+- How to use lifecycle methods such as `componentDidUpdate` more effectively
+- The difference between functional and class components and when to use them
+- How to create references and use them
+- How to get element positions for calculations
+- How to use event listeners
+
+## How to run
+1. Clone or download the repository
+2. Run `npm install` to install the dependencies
+3. Run `npm start` to start the development server
+4. Open `http://localhost:3000` in your browser to see the portfolio
+
+-- OR --
+
+Open `https://areyn77463.github.io/Portfolio/` in your browser to see the portfolio
+
+## Technologies used
+- React
+- JavaScript
+- HTML
+- CSS
+
